@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:12-alpine:///jiradb
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+  security:
+    oauth2:
+      client:
+        registration:
+          jira:
+            client-id: clientId
+            client-secret: clientSecret
+  zipkin:
+    baseUrl:

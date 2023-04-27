@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/ex/jira/a5aebfc2-cddb-43e3-9675-6e090f4f5b1a/rest/api/2/serverInfo"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "baseUrl": "https://scrumpokerpro.atlassian.net",
+      "version": "1001.0.0-SNAPSHOT",
+      "versionNumbers": [
+        1001,
+        0,
+        0
+      ],
+      "deploymentType": "Cloud",
+      "buildNumber": 100166,
+      "buildDate": "2021-06-14T10:26:45.000+0000",
+      "scmInfo": "f329a465d8d5e592711a8dc43461748904c59022",
+      "serverTitle": "Jira",
+      "defaultLocale": {
+        "locale": "en_US"
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

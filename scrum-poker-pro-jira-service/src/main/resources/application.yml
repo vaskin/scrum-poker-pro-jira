@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: scrum-poker-pro-jira
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  security:
+    oauth2:
+      client:
+        provider:
+          jira:
+            token-uri: https://auth.atlassian.com/oauth/token
+            authorization-uri: https://auth.atlassian.com/authorize?audience=api.atlassian.com&prompt=consent
+            user-info-uri: https://api.atlassian.com/me
+            user-name-attribute: name
+        registration:
+          jira:
+            provider: jira
+            scope: 'read:jira-work,write:jira-work,read:jira-user,read:me,offline_access'
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth/client/jira"
+            client-name: Jira
+            client-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_JIRA_CLIENT-ID}
+            client-secret: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_JIRA_CLIENT-SECRET}
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://scrumpokerpro.com/auth/realms/scrumpokerpro/protocol/openid-connect/certs
+  zipkin:
+    baseUrl: ${SPRING_ZIPKIN_BASEURL}
+scrum-poker-pro-jira:
+  atlassian:
+    url: https://api.atlassian.com
+
+logging:
+  level:
+    org.springframework.security: info
+    org.springframework.security.oauth2: trace
+    org.springframework.web.client: trace
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      app: scrum-poker-pro-jira
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus

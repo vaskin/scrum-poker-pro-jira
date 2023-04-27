@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/oauth/token"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik16bERNemsxTVRoRlFVRTJRa0ZGT0VGRk9URkJOREJDTVRRek5EZzJSRVpDT1VKRFJrVXdNZyJ9.eyJodHRwczovL2F0bGFzc2lhbi5jb20vb2F1dGhDbGllbnRJZCI6IkJpZlJ1cWJEUHk4bHdRWENFUWVmQjd2aEJSMDRyNEN5IiwiaHR0cHM6Ly9hdGxhc3NpYW4uY29tL2VtYWlsRG9tYWluIjoiZ21haWwuY29tIiwiaHR0cHM6Ly9hdGxhc3NpYW4uY29tL3N5c3RlbUFjY291bnRJZCI6IjYwYmJkNmUyNDhiODk1MDA2OWMyNDFmNSIsImh0dHBzOi8vYXRsYXNzaWFuLmNvbS9zeXN0ZW1BY2NvdW50RW1haWxEb21haW4iOiJjb25uZWN0LmF0bGFzc2lhbi5jb20iLCJodHRwczovL2F0bGFzc2lhbi5jb20vdmVyaWZpZWQiOnRydWUsImh0dHBzOi8vYXRsYXNzaWFuLmNvbS9maXJzdFBhcnR5IjpmYWxzZSwiaHR0cHM6Ly9hdGxhc3NpYW4uY29tLzNsbyI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9hdGxhc3NpYW4tYWNjb3VudC1wcm9kLnB1czIuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDU1NzA1ODo0YmUwZmM3Yi0wNzg3LTQ0YTQtYmZkZS00ZWVlNGNmYzQzMjEiLCJhdWQiOiJhcGkuYXRsYXNzaWFuLmNvbSIsImlhdCI6MTYyMzc5MDAxNiwiZXhwIjoxNjIzNzkzNjE2LCJhenAiOiJCaWZSdXFiRFB5OGx3UVhDRVFlZkI3dmhCUjA0cjRDeSIsInNjb3BlIjoicmVhZDpqaXJhLXdvcmsgcmVhZDpqaXJhLXVzZXIgcmVhZDptZSBvZmZsaW5lX2FjY2VzcyJ9.HzoAhE7gcZvdGAtwkWUj87FS6oTcfCJWagJL_MX2oAtsD6ZbtUzh7at3sH_SD_6nJM8L1QBPYxP2VzOBugIVPu9qKGgkqUS52rj-Rwp1M5TKkhBCdKSLOWbE5K8PU-93WtNYO9GWUZ4whMgTu_4a0Bid0H-ZWgg0M8ysRwKAdrUQIIEcpkBSROXbS2UsW_2n_JVOjnplVEvKEWaP_UCPPlm-eF-a-4UhILu2wpRWsW2n30V_eI9LiaxkC1z0NDa_tzxYiietclvHr8VYLHnCnSdap67IrazRBn0tKpBerMwvYHF8Lk2Jr2vgt9G7Ev_dDcoWshBW_fVx6DnN0BBv0A",
+      "scope": "read:jira-work read:jira-user read:me offline_access",
+      "expires_in": 3600,
+      "token_type": "Bearer"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

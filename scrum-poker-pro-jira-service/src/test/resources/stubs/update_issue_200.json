@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "PUT",
+    "url": "/ex/jira/a5aebfc2-cddb-43e3-9675-6e090f4f5b1a/rest/api/2/issue/10000",
+    "bodyPatterns" : [ {
+      "equalToJson" : {
+        "fields":{
+          "customfield_10016": 16.0
+        }
+      }
+    } ]
+  },
+  "response": {
+    "status": 204
+  }
+}

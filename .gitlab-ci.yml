@@ -1,0 +1,101 @@
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+  GRADLE_USER_HOME: .gradle
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+stages:
+  - test
+  - build
+  - deploy
+  - release
+
+test:
+  stage: test
+  image: $GRADLE_JDK_IMAGE
+  interruptible: true
+  services:
+    - $CI_DOCKER_IMAGE
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  script:
+    - gradle clean check
+  only:
+    - merge_requests
+
+build:
+  stage: build
+  image: $GRADLE_JDK_IMAGE
+  interruptible: true
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  script:
+    - gradle clean assemble jib
+      -PdockerRegistry=$CI_DOCKER_REGISTRY
+      -PjdkBaseImage=$JDK_BASE_IMAGE
+      -PprojectName=$CI_PROJECT_NAME
+      -PimageTag=$CI_COMMIT_SHORT_SHA
+      -PregistryUser=$CI_REGISTRY_USER
+      -PregistryPassword=$CI_REGISTRY_PASSWORD
+      -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository
+  only:
+    - develop
+    - /^release\/.*/
+
+deploy:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  image: cnych/kustomize:v1.0
+  script:
+    - mkdir -p /root/.ssh
+    - echo "$CI_SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+    - apk add --no-cache openssh-client
+    - ssh-keyscan -H gitlab.com > /root/.ssh/known_hosts
+    - chmod 600 /root/.ssh/id_rsa
+    - git clone git@gitlab.com:scrumpokerpro/k8s-config.git
+    - git config --global user.email "gitlab@gitlab.com"
+    - git config --global user.name "GitLab CI/CD"
+    - cd k8s-config/overlays/prod
+    - kustomize edit set image $CI_DOCKER_REGISTRY/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+    - cat kustomization.yaml
+    - git commit -am '[skip ci] update scrum-poker-pro'
+    - git push origin master
+  only:
+    - develop
+    - /^release\/.*/
+
+finish:
+  stage: release
+  image: cnych/kustomize:v1.0
+  script:
+    - export RELEASE="`echo "$CI_COMMIT_BRANCH" | cut -d '/' -f2`"
+    - 'which ssh-agent || ( apk update -q && apk add openssh )'
+    - eval `ssh-agent -s`
+    - echo "${CI_SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null # add ssh key
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - git remote rm origin && git remote add origin "ssh://git@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+    - git fetch --all
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git config --global user.name "${GITLAB_USER_LOGIN}"
+    - git checkout $CI_COMMIT_BRANCH
+    - git checkout main
+    - git merge --no-ff --allow-unrelated-histories --strategy-option theirs $CI_COMMIT_BRANCH
+    - git tag -a $RELEASE -m "[RELEASE] $RELEASE"
+    - git checkout develop
+    - git merge --no-ff $CI_COMMIT_BRANCH
+    - git branch -d $CI_COMMIT_BRANCH
+    - git push origin main
+    - git push origin --tags
+    - git push origin develop
+    - git push origin -d $CI_COMMIT_BRANCH
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(release\/.*|hotfix\/.*)/'
+      when: manual
+      allow_failure: true

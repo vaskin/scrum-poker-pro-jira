@@ -1,0 +1,178 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/ex/jira/a5aebfc2-cddb-43e3-9675-6e090f4f5b1a/rest/api/2/search",
+    "bodyPatterns": [
+      {
+        "equalToJson": "{ \"jql\" : \"sprint = 'text' ORDER BY created DESC\" }",
+        "ignoreArrayOrder": true,
+        "ignoreExtraElements": true
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "expand": "schema,names",
+      "startAt": 0,
+      "maxResults": 15,
+      "total": 2,
+      "issues": [
+        {
+          "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+          "id": "10013",
+          "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issue/10013",
+          "key": "SPP-14",
+          "fields": {
+            "summary": "Get project list",
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issuetype/10003",
+              "id": "10003",
+              "description": "A small piece of work that's part of a larger task.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/secure/viewavatar?size=medium&avatarId=10316&avatarType=issuetype",
+              "name": "Sub-task",
+              "subtask": true,
+              "avatarId": 10316,
+              "hierarchyLevel": -1
+            },
+            "parent": {
+              "id": "10015",
+              "key": "SPP-16",
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issue/10015",
+              "fields": {
+                "summary": "Poker Planning Meeting",
+                "status": {
+                  "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/status/10000",
+                  "description": "",
+                  "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/",
+                  "name": "To Do",
+                  "id": "10000",
+                  "statusCategory": {
+                    "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/statuscategory/2",
+                    "id": 2,
+                    "key": "new",
+                    "colorName": "blue-gray",
+                    "name": "To Do"
+                  }
+                },
+                "priority": {
+                  "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/priority/3",
+                  "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/images/icons/priorities/medium.svg",
+                  "name": "Medium",
+                  "id": "3"
+                },
+                "issuetype": {
+                  "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issuetype/10001",
+                  "id": "10001",
+                  "description": "Functionality or a feature expressed as a user goal.",
+                  "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/secure/viewavatar?size=medium&avatarId=10315&avatarType=issuetype",
+                  "name": "Story",
+                  "subtask": false,
+                  "avatarId": 10315,
+                  "hierarchyLevel": 0
+                }
+              }
+            },
+            "description": "Task description",
+            "assignee": {
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/user?accountId=557058%3A4be0fc7b-0787-44a4-bfde-4eee4cfc4321",
+              "accountId": "557058:4be0fc7b-0787-44a4-bfde-4eee4cfc4321",
+              "emailAddress": "aleksandr.vaskin@gmail.com",
+              "avatarUrls": {
+                "48x48": "https://secure.gravatar.com/avatar/4c878ca68dfd3b7cc8246fc6a4770ece?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAV-4.png",
+                "24x24": "https://secure.gravatar.com/avatar/4c878ca68dfd3b7cc8246fc6a4770ece?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAV-4.png",
+                "16x16": "https://secure.gravatar.com/avatar/4c878ca68dfd3b7cc8246fc6a4770ece?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAV-4.png",
+                "32x32": "https://secure.gravatar.com/avatar/4c878ca68dfd3b7cc8246fc6a4770ece?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FAV-4.png"
+              },
+              "displayName": "Aleksandr Vaskin",
+              "active": true,
+              "timeZone": "Etc/GMT",
+              "accountType": "atlassian"
+            },
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/status/10001",
+              "description": "",
+              "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/",
+              "name": "Done",
+              "id": "10001",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/statuscategory/3",
+                "id": 3,
+                "key": "done",
+                "colorName": "green",
+                "name": "Done"
+              }
+            }
+          }
+        },
+        {
+          "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+          "id": "10006",
+          "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issue/10006",
+          "key": "SPP-7",
+          "fields": {
+            "summary": "Интеграция с Jira",
+            "issuetype": {
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/issuetype/10001",
+              "id": "10001",
+              "description": "Functionality or a feature expressed as a user goal.",
+              "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/secure/viewavatar?size=medium&avatarId=10315&avatarType=issuetype",
+              "name": "Story",
+              "subtask": false,
+              "avatarId": 10315,
+              "hierarchyLevel": 0
+            },
+            "description": null,
+            "assignee": null,
+            "status": {
+              "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/status/10000",
+              "description": "",
+              "iconUrl": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/",
+              "name": "To Do",
+              "id": "10000",
+              "statusCategory": {
+                "self": "https://api.atlassian.com/ex/jira/d47750d2-865e-438e-b515-23936e434276/rest/api/2/statuscategory/2",
+                "id": 2,
+                "key": "new",
+                "colorName": "blue-gray",
+                "name": "To Do"
+              }
+            }
+          }
+        }
+      ],
+      "names": {
+        "summary": "Summary",
+        "issuetype": "Issue Type",
+        "description": "Description",
+        "assignee": "Assignee",
+        "status": "Status"
+      },
+      "schema": {
+        "summary": {
+          "type": "string",
+          "system": "summary"
+        },
+        "issuetype": {
+          "type": "issuetype",
+          "system": "issuetype"
+        },
+        "description": {
+          "type": "string",
+          "system": "description"
+        },
+        "assignee": {
+          "type": "user",
+          "system": "assignee"
+        },
+        "status": {
+          "type": "status",
+          "system": "status"
+        }
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

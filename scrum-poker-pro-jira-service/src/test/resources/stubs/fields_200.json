@@ -1,0 +1,51 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/ex/jira/a5aebfc2-cddb-43e3-9675-6e090f4f5b1a/rest/api/2/field"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": [
+      {
+        "id": "labels",
+        "key": "labels",
+        "name": "Labels",
+        "custom": false,
+        "orderable": true,
+        "navigable": true,
+        "searchable": true,
+        "clauseNames": [
+          "labels"
+        ],
+        "schema": {
+          "type": "array",
+          "items": "string",
+          "system": "labels"
+        }
+      },
+      {
+        "id": "customfield_10026",
+        "key": "customfield_10026",
+        "name": "Story Points",
+        "untranslatedName": "Story Points",
+        "custom": true,
+        "orderable": true,
+        "navigable": true,
+        "searchable": true,
+        "clauseNames": [
+          "cf[10026]",
+          "Story Points",
+          "Story Points[Number]"
+        ],
+        "schema": {
+          "type": "number",
+          "custom": "com.atlassian.jira.plugin.system.customfieldtypes:float",
+          "customId": 10026
+        }
+      }
+    ],
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
